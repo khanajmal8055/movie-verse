@@ -54,8 +54,8 @@ const UserContext = ({children}) => {
         try {
             const res = await axios.post("/user/login", loginForm);
             console.log(res.data);
-            // setUser(res.data.data.user)
-            // setIsLoading(true)
+            setUser(res.data.data.user)
+            setIsLoading(true)
             setIsLoggedIn(true)
             
             
@@ -107,7 +107,7 @@ const UserContext = ({children}) => {
 
     useEffect(()=>{
         getProfile()
-    },[isLoggedIn,isLoading,admin])
+    },[])
     
     
     
