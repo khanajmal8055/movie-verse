@@ -57,6 +57,9 @@ const UserContext = ({children}) => {
             setUser(res.data.data.user)
             setIsLoading(true)
             setIsLoggedIn(true)
+            if(user.role === "admin"){
+                setAdmin(true)
+            }
             
             
             setTimeout(() => {
@@ -82,10 +85,16 @@ const UserContext = ({children}) => {
           if(user.role === "admin"){
             setAdmin(true)
           }
+          else {
+            setAdmin(false)
+          }
             
         } 
         catch (error) {
             console.log(error);
+            setUser(null);
+            setIsLoggedIn(false);
+            setAdmin(false);
             
         }
     }
@@ -96,6 +105,8 @@ const UserContext = ({children}) => {
         try {
             await axios.post('/user/logout')
             setIsLoggedIn(false)
+            setUser(null)
+            setAdmin(false)
             
         } 
         catch (error) {
