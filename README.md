@@ -142,11 +142,8 @@ npm run preview   # Preview production build
 ### UI & UX Considerations
 
 - Responsive layout for mobile and desktop
-
 - Conditional rendering to avoid unauthorized actions
-- 
 - Graceful handling of loading and error states
-- 
 - Consistent component-based design
 
 
