@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import axios from '../api/axios'
-import { Password } from '@mui/icons-material'
+import { FormatQuote, Password } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 
 export const UserDataContext = createContext()
@@ -10,7 +10,7 @@ const UserContext = ({children}) => {
     const [loginForm, setLoginForm] = useState({email:'' , password:''})
     const [loginError, setLoginError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
     const [registerForm, setRegisterForm] = useState({email:"",userName:"" , fullName:"" , password:"" , adminKey:""})
     const [errors, setErrors] = useState("")
     const [admin, setAdmin] = useState(false)
@@ -53,12 +53,15 @@ const UserContext = ({children}) => {
         setIsLoading(true);
         try {
             const res = await axios.post("/user/login", loginForm);
-            console.log(res.data);
-            setUser(res.data.data.user)
+            // console.log(res.data);
+            const loggedInUser = res.data.data.user
+            setUser(loggedInUser)
             setIsLoading(true)
-            setIsLoggedIn(true)
-            if(user.role === "admin"){
+            if(loggedInUser.role === "admin"){
                 setAdmin(true)
+            }
+            else{
+                setAdmin(false)
             }
             
             
@@ -79,10 +82,12 @@ const UserContext = ({children}) => {
     const getProfile = async()=>{
         try {
           const res = await axios.get('/user/view-profile')
-          console.log(res.data.data);
-          setUser(res.data.data)
+        //   console.log(res.data.data);
+        const profileUser = res.data.data
+          setUser(profileUser)
           setIsLoggedIn(true)
-          if(user.role === "admin"){
+          
+          if(profileUser.role === "admin"){
             setAdmin(true)
           }
           else {
