@@ -157,13 +157,9 @@ The frontend is deployed on Vercel.
 ## Deployment steps:
 
 - Push frontend code to GitHub
-- 
 - Import repository into Vercel
-- 
 - Add environment variables in Vercel dashboard
-- 
 - Deploy with default Vite configuration
-- 
 - Vercel automatically redeploys on every push to the main branch.
 
 ## Author
