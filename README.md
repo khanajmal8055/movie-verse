@@ -93,6 +93,40 @@ src/
 
 ---
 
+
+---
+
+## Project Setup / Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/movie-verse.git
+cd movie-verse
+
+npm install
+
+VITE_BACKEND_URL=https://imdb-top-rated-movies-production.up.railway.app/api/v1
+
+
+npm run dev       # Development
+npm run build     # Production build
+npm run preview   # Preview production build
+
+
+```
+
+### API Integration 
+
+```bash 
+    axios.create({
+    baseURL: import.meta.env.VITE_BACKEND_URL,
+    withCredentials: true,
+    });
+
+```
+
+
 ## Authentication & State Flow
 
 1. User logs in via login form
@@ -104,51 +138,35 @@ src/
    - `user.role`
 6. Admin-specific UI elements are conditionally rendered
 
-This approach avoids storing tokens in localStorage and improves security.
 
----
+### UI & UX Considerations
 
-Environment Variables
+- Responsive layout for mobile and desktop
 
-Create a .env file in the root directory:
+- Conditional rendering to avoid unauthorized actions
+- 
+- Graceful handling of loading and error states
+- 
+- Consistent component-based design
 
-VITE_BACKEND_URL=https://imdb-top-rated-movies-production.up.railway.app/api/v1
 
-
-Environment variables must be prefixed with VITE_ to be accessible in the frontend.
-
-Scripts
-npm run dev       # Run app in development mode
-npm run build     # Build for production
-npm run preview   # Preview production build locally
-
-UI & UX Considerations
-
-Responsive layout for mobile and desktop
-
-Conditional rendering to avoid unauthorized actions
-
-Graceful handling of loading and error states
-
-Consistent component-based design
-
-Deployment
+### Deployment
 
 The frontend is deployed on Vercel.
 
-Deployment steps:
+## Deployment steps:
 
-Push frontend code to GitHub
+- Push frontend code to GitHub
+- 
+- Import repository into Vercel
+- 
+- Add environment variables in Vercel dashboard
+- 
+- Deploy with default Vite configuration
+- 
+- Vercel automatically redeploys on every push to the main branch.
 
-Import repository into Vercel
-
-Add environment variables in Vercel dashboard
-
-Deploy with default Vite configuration
-
-Vercel automatically redeploys on every push to the main branch.
-
-Author
+## Author
 
 Ajmal
 MERN Stack Developer
