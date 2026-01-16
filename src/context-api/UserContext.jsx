@@ -56,7 +56,8 @@ const UserContext = ({children}) => {
             // console.log(res.data);
             const loggedInUser = res.data.data.user
             setUser(loggedInUser)
-            setIsLoading(true)
+            setIsLoggedIn(true)
+            
             if(loggedInUser.role === "admin"){
                 setAdmin(true)
             }
