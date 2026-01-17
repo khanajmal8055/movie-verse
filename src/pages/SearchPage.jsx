@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import SearchedMovies from '../components/SearchedMovies';
 const SearchPage = () => {
-    const {setSortBy , setOrder , setPage , sortBy , order ,loading} = useContext(MovieDataContext);
+    const {setSortBy , setOrder , setPage , sortBy , order ,loading , filterMovies , filterTotalPages} = useContext(MovieDataContext);
     const [anchorEl , setAnchorEl] = useState(null);
 
     const {setSearch , search} = useContext(MovieDataContext)
@@ -139,7 +139,8 @@ const SearchPage = () => {
             
           </Box>
         </Box>
-        <MovieList/>
+        {filterMovies.length === 0 ? <CircularProgress/> : <MovieList movie={filterMovies} totalPages={filterTotalPages}/> }
+        
         
       </>
   )

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import MovieList from '../components/MovieList'
-import { Box } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import { MovieDataContext } from '../context-api/movieContext'
 
 const HomePage = () => {
+
+  const {movie , loading , totalPages} = useContext(MovieDataContext)
   
   return (
     <Box sx={{
@@ -12,7 +14,8 @@ const HomePage = () => {
       width: '100%',
       overflowX: 'hidden',
     }}>
-      <MovieList />
+      {loading ? <CircularProgress/> : <MovieList movie={movie} totalPages={totalPages} /> }
+      
     </Box>
   )
 }

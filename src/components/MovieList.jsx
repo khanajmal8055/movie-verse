@@ -3,8 +3,8 @@ import { MovieDataContext } from '../context-api/movieContext'
 import { Box, Grid, Pagination, Typography, CircularProgress } from '@mui/material'
 import MovieCard from './MovieCard'
 
-const MovieList = () => {
-    const {movie , totalPages,page , setPage} = useContext(MovieDataContext)
+const MovieList = ({movie , totalPages}) => {
+    const {page , setPage} = useContext(MovieDataContext)
     
     const handlePageChange = (event, value)=>{
         setPage(value)

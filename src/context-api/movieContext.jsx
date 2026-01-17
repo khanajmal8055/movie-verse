@@ -18,6 +18,8 @@ const MovieContext = ({children})=>{
     const [searchedMovie, setSearchedMovie] = useState([])
     const [movieForm, setMovieForm] = useState({title:"" , description:"" , rating:"" ,duration:"" , imdbId:"" ,releaseDate:""})
     const [poster, setPoster] = useState(null)
+    const [filterMovies, setFilterMovies] = useState([])
+    const [filterTotalPages, setFilterTotalPages] = useState(1)
 
     const navigate = useNavigate()
     
@@ -45,15 +47,19 @@ const MovieContext = ({children})=>{
     }
 
     const getMoviesBySearch = async(search,page)=>{
+        setLoading(true)
         try {
             const res = await axios.get(`/movies/search/?search=${search}&page=${page}`)
             console.log(res.data);
-            setMovie(res.data.data.movies)
-            setTotalPages(res.data.data.totalPages)
-            setLoading(false)
+            setFilterMovies(res.data.data.movies)
+            setFilterTotalPages(res.data.data.totalPages)
+            
         } 
         catch (error) {
             alert("No Movies Found based on your Search Query")
+        }
+        finally{
+            setLoading(false)
         }
         
         
@@ -62,7 +68,10 @@ const MovieContext = ({children})=>{
 
     const getMoviesBySorting = async(sortBy , order ,page) =>{
         const res = await axios.get(`/movies/sorted?sortBy=${sortBy}&page=${page}&order=${order}`)
-        setMovie(res.data.data.movies)
+        console.log(res.data);
+        
+        setFilterMovies(res.data.data.movies)
+        setFilterTotalPages(res.data.data.totalPages)
         
     }
 
@@ -141,7 +150,7 @@ const MovieContext = ({children})=>{
 
 
     return(
-        <MovieDataContext.Provider value={{setPage , page,movie , loading , totalPages,currentPage,getMoviesBySearch,setSearch , setOrder,setSortBy,uploadMovie,movieForm,setMovieForm , poster , setPoster , deleteMovies}}>
+        <MovieDataContext.Provider value={{setPage , page,movie , loading , totalPages,currentPage,getMoviesBySearch,setSearch , setOrder,setSortBy,uploadMovie,movieForm,setMovieForm , poster , setPoster , deleteMovies , filterMovies , filterTotalPages}}>
             {children}
         </MovieDataContext.Provider>
     )
