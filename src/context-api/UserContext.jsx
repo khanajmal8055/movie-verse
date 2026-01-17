@@ -19,16 +19,6 @@ const UserContext = ({children}) => {
 
 
     const registerUser = async(e)=>{
-        console.log(registerForm.email);
-        console.log(registerForm.name);
-        console.log(registerForm.password);
-        console.log(registerForm.fullName);
-        console.log(registerForm.adminKey);
-        
-        
-        
-        
-        
         e.preventDefault()
         setErrors("")
         setIsLoading(true)

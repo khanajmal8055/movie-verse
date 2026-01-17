@@ -61,7 +61,7 @@ const MovieDetails = () => {
         movieDetails()
     },[id])
 
-    console.log(movieDetails);
+    // console.log(movieDetails);
     
 
     const dateString = new Date(movieDetails.releaseDate)

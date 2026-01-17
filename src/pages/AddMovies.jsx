@@ -20,7 +20,7 @@ const AddMovies = () => {
     }
 
     const handleFileChange = (e)=>{
-        console.log("hello");
+        // console.log("hello");
         
         setPoster(e.target.files[0])
     }

@@ -30,7 +30,7 @@ const MovieContext = ({children})=>{
         setLoading(true)
         try {
             const res = await axios.get(`/movies/?page=${page}`)  
-            console.log(res.data.data);
+            // console.log(res.data.data);
             setMovie(res.data.data.movies)
             setCurrentPage(res.data.data.currentPage)
             setTotalPages(res.data.data.totalPages)
@@ -50,7 +50,7 @@ const MovieContext = ({children})=>{
         setLoading(true)
         try {
             const res = await axios.get(`/movies/search/?search=${search}&page=${page}`)
-            console.log(res.data);
+            // console.log(res.data);
             setFilterMovies(res.data.data.movies)
             setFilterTotalPages(res.data.data.totalPages)
             
@@ -68,7 +68,7 @@ const MovieContext = ({children})=>{
 
     const getMoviesBySorting = async(sortBy , order ,page) =>{
         const res = await axios.get(`/movies/sorted?sortBy=${sortBy}&page=${page}&order=${order}`)
-        console.log(res.data);
+        // console.log(res.data);
         
         setFilterMovies(res.data.data.movies)
         setFilterTotalPages(res.data.data.totalPages)
@@ -76,7 +76,7 @@ const MovieContext = ({children})=>{
     }
 
     const uploadMovie = async(e)=>{
-        console.log(movieForm.poster);
+        // console.log(movieForm.poster);
         
         e.preventDefault()
         const formData = new FormData()
@@ -88,11 +88,11 @@ const MovieContext = ({children})=>{
         formData.append("releaseDate", movieForm.releaseDate);
         formData.append("poster", poster);
         setLoading(true)
-        console.log(formData.get("poster"));
+        // console.log(formData.get("poster"));
         
         try {
             const res = await axiosFormdata.post('/movies/add-movies' , formData)
-            console.log(res.data);
+            // console.log(res.data);
             
         } 
         catch (error) {
@@ -114,7 +114,7 @@ const MovieContext = ({children})=>{
             
         } 
         catch (error) {
-
+            alert("Problem in Deleting this movie")
         }
     }
 

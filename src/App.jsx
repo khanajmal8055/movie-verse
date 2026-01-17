@@ -24,8 +24,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 // ============================================
 // These are preview components demonstrating improved UX.
 // They are completely isolated from production cod
-import Login from "./pages/LoginPagePreview.jsx"
-import SignupPagePreview from "./pages/SignupPagePreview.jsx";
+import Login from "./pages/LoginPage.jsx"
+import SignupPagePreview from "./pages/SignupPage.jsx";
 import AddMovies from "./pages/AddMovies.jsx";
 import MovieDetails from "./pages/MovieDetails.jsx";
 // ============================================
